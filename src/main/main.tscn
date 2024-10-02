@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://cakr7qysi64ga"]
+
+[ext_resource type="Script" path="res://src/main/main.gd" id="1_8omgs"]
+[ext_resource type="PackedScene" uid="uid://bi7ub4bfr34d8" path="res://src/player/player.tscn" id="2_wngtf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgb8i"]
+size = Vector2(20, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr4we"]
+size = Vector2(500, 20)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8omgs")
+
+[node name="bg" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -896.0
+offset_top = -784.0
+offset_right = 896.0
+offset_bottom = 784.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145868, 0.145868, 0.145868, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="gameArea" type="Node2D" parent="."]
+
+[node name="Player" parent="gameArea" instance=ExtResource("2_wngtf")]
+
+[node name="left_area" type="Area2D" parent="."]
+position = Vector2(-250, 0)
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_area"]
+shape = SubResource("RectangleShape2D_rgb8i")
+
+[node name="ColorRect" type="ColorRect" parent="left_area/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="right_area" type="Area2D" parent="."]
+position = Vector2(250, 0)
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_area"]
+shape = SubResource("RectangleShape2D_rgb8i")
+
+[node name="ColorRect" type="ColorRect" parent="right_area/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top_area" type="Area2D" parent="."]
+position = Vector2(0, -250)
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_area"]
+shape = SubResource("RectangleShape2D_tr4we")
+
+[node name="bottom_area" type="Area2D" parent="."]
+position = Vector2(0, 250)
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_area"]
+shape = SubResource("RectangleShape2D_tr4we")
