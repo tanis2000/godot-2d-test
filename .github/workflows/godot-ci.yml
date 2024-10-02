@@ -5,7 +5,7 @@ env:
   GODOT_VERSION: 4.3
   EXPORT_NAME: godot-2d-test
   PROJECT_PATH: godot-2d-test
-  IMAGE_NAME: barichello/godot-ci:${GODOT_VERSION}
+  IMAGE_NAME: barichello/godot-ci:4.3
 
 jobs:
   export-windows:
