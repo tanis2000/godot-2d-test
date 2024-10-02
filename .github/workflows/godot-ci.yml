@@ -5,14 +5,13 @@ env:
   GODOT_VERSION: 4.3
   EXPORT_NAME: godot-2d-test
   PROJECT_PATH: godot-2d-test
-  IMAGE_NAME: barichello/godot-ci:4.3
 
 jobs:
   export-windows:
     name: Windows Export
     runs-on: ubuntu-20.04
     container:
-      image: ${IMAGE_NAME}
+      image: barichello/godot-ci:4.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,7 +36,7 @@ jobs:
     name: Linux Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.2.1
+      image: barichello/godot-ci:4.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,7 +61,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-20.04
     container:
-      image: ${IMAGE_NAME}
+      image: barichello/godot-ci:4.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -95,7 +94,7 @@ jobs:
     name: Mac Export
     runs-on: ubuntu-20.04
     container:
-      image: ${IMAGE_NAME}
+      image: barichello/godot-ci:4.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
