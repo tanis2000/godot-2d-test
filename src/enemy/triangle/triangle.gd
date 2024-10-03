@@ -44,7 +44,7 @@ func kill(soft := false):
 	for i in 4:
 		Utils.spawn(preload("res://src/particle/enemy_pop/enemy_pop.tscn"), position, get_parent(), {color = $Line2D.default_color})
 
-	Global.stats.totalEnemiesKilled += 1
+	Global.stats.total_enemies_killed += 1
 
 	queue_free()
 

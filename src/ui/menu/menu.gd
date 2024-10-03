@@ -44,4 +44,7 @@ func _on_name_changed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("ct_input"):
+		Global.inputType = Global.InputType.INPUT_CONTROLLER
+	if Input.is_action_just_pressed("kb_input"):
+		Global.inputType = Global.InputType.INPUT_KEYBOARD

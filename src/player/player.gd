@@ -4,16 +4,16 @@ extends CharacterBody2D
 
 var shooting = 0.0
 var moving = 0.0
-var fireRate := 1.0
-var multiShot := 0.0
+var fireRate := 2.0
 var shootTimer := 0.0
 var max_speed = 200.0
 var knockbackVel := Vector2.ZERO
 var hitTimer := 0.0
+var aimAngle := Vector2.ZERO
 
 func _ready():
 	Global.player = self
-	
+
 func _physics_process(delta):
 	shooting -= 10.0 * delta
 	hitTimer -= 1.0 * delta
@@ -29,19 +29,36 @@ func _physics_process(delta):
 	else:
 		moveDir.x -= Input.get_action_strength("ct_left")
 
+	if Input.is_action_pressed("up"):
+		moveDir.y -= 1
+	else:
+		moveDir.y -= Input.get_action_strength("ct_up")
+
+	if Input.is_action_pressed("down"):
+		moveDir.y += 1
+	else:
+		moveDir.y += Input.get_action_strength("ct_down")
+
 	if moveDir.length() > 0.001:
 		moving = 1.0
 
-	if Input.is_action_pressed("ct_shoot"):
+	if Input.is_action_pressed("ct_shoot") or Input.is_action_pressed("shoot"):
 		shooting = 1.0
 
-	shootTimer -= 1.0 * delta
-	if shootTimer <= 0.0 and Input.is_action_pressed("ct_shoot"):
-		shootTimer = 1.0 / (0.36 * fireRate - 1.0 * multiShot) + (1.0 / 0.4)
+	if Global.inputType == Global.InputType.INPUT_KEYBOARD:
+		aimAngle = get_local_mouse_position().normalized()
+	else:
+		var vec = Input.get_vector("ct_aim_left", "ct_aim_right", "ct_aim_up", "ct_aim_down")
+		if vec.length() > 0.1:
+			aimAngle = vec.normalized()
 
-		var count := float(multiShot) + 1.0
-		for i in count:
-			Utils.spawn(Bullet, position, get_parent())
+	shootTimer -= 1.0 * delta
+	if shootTimer <= 0.0 and (Input.is_action_pressed("ct_shoot") or Input.is_action_pressed("shoot")):
+		shootTimer = 1.0 / fireRate
+		Audio.play(preload("res://src/sfx/shoot.wav"))
+		var angle = aimAngle
+		Utils.spawn(Bullet, position, get_parent(), {angle = angle})
+		Global.stats.total_bullets_fired +=1
 
 	moveDir = moveDir.limit_length(1.0)
 

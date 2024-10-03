@@ -8,6 +8,7 @@ var args := {
 var angle := Vector2.RIGHT
 var speed := 0.0
 var timer := 0.0
+var damage = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

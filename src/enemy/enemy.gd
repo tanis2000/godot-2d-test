@@ -51,9 +51,4 @@ func updateHealth():
 	if health <= 0.0:
 		if not killed:
 			killed = true
-			var count = 1
-			if "coins" in parent:
-				count = parent.coins
-			if count > 0:
-				Game.spawnCoins(count, parent.global_position)
 			parent.kill()
