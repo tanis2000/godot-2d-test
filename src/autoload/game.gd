@@ -10,7 +10,7 @@ func save_data():
 func load_data():
 	var file = FileAccess.open("user://save_data.res", FileAccess.READ)
 	if not file:
-		return
+			return
 	var data:Dictionary = JSON.parse_string(file.get_line())
 	if data:
 		if data.has("options"):

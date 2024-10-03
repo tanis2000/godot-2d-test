@@ -10,7 +10,7 @@ script = ExtResource("1_lushu")
 
 [node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_yf7g5")

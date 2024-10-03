@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cakr7qysi64ga"]
+[gd_scene load_steps=7 format=3 uid="uid://cakr7qysi64ga"]
 
 [ext_resource type="Script" path="res://src/main/main.gd" id="1_8omgs"]
 [ext_resource type="PackedScene" uid="uid://bi7ub4bfr34d8" path="res://src/player/player.tscn" id="2_wngtf"]
+[ext_resource type="PackedScene" uid="uid://v3rume1ve5b2" path="res://src/enemy/triangle/triangle.tscn" id="3_q64ja"]
+[ext_resource type="PackedScene" uid="uid://dgvjrr8utn2ou" path="res://src/ui/hud/hud.tscn" id="4_o4ah5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgb8i"]
 size = Vector2(20, 500)
@@ -31,6 +33,9 @@ color = Color(0.145868, 0.145868, 0.145868, 1)
 [node name="gameArea" type="Node2D" parent="."]
 
 [node name="Player" parent="gameArea" instance=ExtResource("2_wngtf")]
+
+[node name="Triangle" parent="gameArea" instance=ExtResource("3_q64ja")]
+position = Vector2(164.72, 0)
 
 [node name="left_area" type="Area2D" parent="."]
 position = Vector2(-250, 0)
@@ -89,3 +94,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_area"]
 shape = SubResource("RectangleShape2D_tr4we")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("4_o4ah5")]

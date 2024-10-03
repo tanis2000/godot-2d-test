@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Utils="*res://src/autoload/utils.gd"
 Global="*res://src/autoload/global.gd"
 Game="*res://src/autoload/game.gd"
+Audio="*res://src/autoload/audio.gd"
 
 [input]
 
@@ -57,6 +58,11 @@ ct_left={
 2d_physics/layer_3="pickup"
 2d_physics/layer_4="player"
 2d_physics/layer_5="bullet"
+2d_physics/layer_6="enemyDetect"
+2d_physics/layer_7="enemyCollide"
+2d_physics/layer_8="wallEnemyDetect"
+2d_physics/layer_9="wallEnemyCollide"
+2d_physics/layer_10="enemyBullet"
 
 [rendering]
 

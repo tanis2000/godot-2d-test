@@ -74,3 +74,5 @@ layout_mode = 2
 text = "Quit"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Audio" type="Node" parent="."]

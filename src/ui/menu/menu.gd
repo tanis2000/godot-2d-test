@@ -5,10 +5,15 @@ extends Node2D
 @onready var start_button = $Panel/VBoxContainer/HBoxContainer/VBoxContainer/StartButton
 @onready var quit_button = $Panel/VBoxContainer/HBoxContainer/VBoxContainer/QuitButton
 @onready var name_input = $Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameTextEdit
+@onready var audio = $Audio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.menu = self
 	Game.load_data()
+	Audio.setup(audio)
+	Audio.set_volume("sfx", Global.options.sound_volume)
+	Audio.set_volume("music", Global.options.music_volume)
 	name_input.text = Global.options.name
 	start_button.pressed.connect(_on_start_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)

@@ -35,3 +35,6 @@ func hitWall(side:int = 0):
 	Utils.spawn(preload("res://src/particle/bullet_pop/bullet_pop_wall.tscn"), position, get_parent())
 	queue_free()
 
+func hit_enemy(enemy:Node2D):
+	Utils.spawn(preload("res://src/particle/bullet_pop/bullet_pop_wall.tscn"), position, get_parent())
+	speed *= 0.667
